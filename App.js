@@ -1,19 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, FlatList, Alert } from "react-native";
+import Header from "./components/Header";
+import AddItem from "./components/AddItem";
+import List from "./components/List";
+import { Provider } from "react-redux";
+import store from "./store";
 
-export default function App() {
+const App = ({ item }) => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Header title="Courses à faire" />
+        <AddItem />
+        <List />
+      </View>
+    </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  text: {
+    margin: 5,
+    padding: 3,
+    alignItems: "center",
+    alignContent: "center",
+    textAlign: "center",
   },
 });
+
+export default App;
